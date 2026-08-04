@@ -67,8 +67,8 @@ export default function Hero() {
           <source src={bgVideo} type="video/mp4" />
         </video>
         {/* Overlay agar teks lebih terbaca dan menyatu dengan background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0a0a0a] z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black z-10" />
       </div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 w-full flex flex-col justify-center h-full pb-20">
