@@ -32,13 +32,14 @@ export default function Header() {
   }, []);
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
-        isScrolled 
-          ? "bg-black/20 backdrop-blur-md border-b border-white/5 py-0" 
-          : "bg-transparent border-transparent py-2"
-      }`}
-    >
+    <>
+      <header 
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+          isScrolled 
+            ? "bg-black/20 backdrop-blur-md border-b border-white/5 py-0" 
+            : "bg-transparent border-transparent py-2"
+        }`}
+      >
       <div className="container mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group relative z-[60]">
@@ -69,18 +70,19 @@ export default function Header() {
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
+      </header>
 
-      {/* Mobile Nav Drawer */}
+      {/* Mobile Nav Drawer (Rendered OUTSIDE header to avoid backdrop-filter trapping) */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <>
+          <div className="fixed inset-0 z-[100] lg:hidden">
             {/* Backdrop Semi-Transparan */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] lg:hidden"
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm z-[1]"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             
@@ -90,23 +92,16 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
-              className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-background border-l border-white/10 z-[58] lg:hidden flex flex-col pt-24 px-8 shadow-2xl"
+              className="absolute top-0 right-0 h-full w-[65%] max-w-[320px] bg-[#1a1a1a] border-l border-white/5 z-[2] flex flex-col pt-[100px] px-8 shadow-2xl"
             >
-              <div className="flex flex-col gap-8 mt-8">
-                <Link
-                  to="/"
-                  className={`text-2xl font-medium transition-colors hover:text-primary ${
-                    location.pathname === "/" ? "text-primary" : "text-foreground/80"
-                  }`}
-                >
-                  Home
-                </Link>
+              <div className="flex flex-col gap-7 mt-4">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     to={link.path}
-                    className={`text-2xl font-medium transition-colors hover:text-primary ${
-                      location.pathname === link.path ? "text-primary" : "text-foreground/80"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`text-[17px] font-medium transition-colors hover:text-primary ${
+                      location.pathname === link.path ? "text-primary" : "text-white/90"
                     }`}
                   >
                     {link.name}
@@ -114,9 +109,29 @@ export default function Header() {
                 ))}
               </div>
             </motion.div>
-          </>
+
+            {/* Navbar Bar — Logo wrapped in dark transparent background */}
+            <div className="absolute top-0 left-0 right-0 h-20 bg-[#111111]/90 backdrop-blur-md z-[3] pointer-events-none">
+              <div className="container mx-auto px-6 md:px-12 h-full flex items-center">
+                <Link to="/" className="flex items-center gap-2 group pointer-events-auto" onClick={() => setIsMobileMenuOpen(false)}>
+                  <img src={logoImg} alt="Coding Collective Logo" className="h-12 w-auto md:h-16 object-contain" />
+                </Link>
+              </div>
+            </div>
+
+            {/* X Button — floating above navbar bar */}
+            <div className="absolute top-0 right-0 h-20 z-[4] flex items-center px-6 md:px-12">
+              <button
+                className="p-2 text-white hover:text-primary transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+                aria-label="Close Menu"
+              >
+                <X size={28} />
+              </button>
+            </div>
+          </div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

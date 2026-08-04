@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import bgVideo from "@/assets/bg-video.mp4";
+import { useTypingEffect } from "@/hooks/useTypingEffect";
 
 const taglines = [
   "Tech Talent Aggregator",
@@ -10,45 +10,7 @@ const taglines = [
 ];
 
 export default function Hero() {
-  const [text, setText] = useState("");
-  const [taglineIndex, setTaglineIndex] = useState(0);
-
-  useEffect(() => {
-    let currentIndex = 0;
-    let isDeleting = false;
-    let timeoutId: ReturnType<typeof setTimeout>;
-    let currentWordIndex = 0; // Local tracking state
-
-    const type = () => {
-      const currentWord = taglines[currentWordIndex];
-      setText(currentWord.substring(0, currentIndex));
-
-      if (!isDeleting && currentIndex === currentWord.length) {
-        // Paused at the end of word
-        timeoutId = setTimeout(() => {
-          isDeleting = true;
-          type();
-        }, 2500);
-      } else if (isDeleting && currentIndex === 0) {
-        // Paused at the start (deleted all)
-        isDeleting = false;
-        currentWordIndex = (currentWordIndex + 1) % taglines.length;
-        setTaglineIndex(currentWordIndex);
-        
-        timeoutId = setTimeout(() => {
-          type();
-        }, 500);
-      } else {
-        currentIndex += isDeleting ? -1 : 1;
-        const typeSpeed = isDeleting ? 30 : Math.random() * 50 + 70;
-        timeoutId = setTimeout(type, typeSpeed);
-      }
-    };
-
-    timeoutId = setTimeout(type, 500);
-
-    return () => clearTimeout(timeoutId);
-  }, []);
+  const { text, wordIndex: taglineIndex } = useTypingEffect(taglines);
 
   // Whether it's currently typing the 3rd text and has reached the newline character
   const shouldDropCollective = taglineIndex === 2 && text.length > 26;
@@ -61,7 +23,8 @@ export default function Hero() {
           autoPlay 
           loop 
           muted 
-          playsInline 
+          playsInline
+          preload="metadata"
           className="absolute inset-0 w-full h-full object-cover opacity-50"
         >
           <source src={bgVideo} type="video/mp4" />
@@ -92,12 +55,12 @@ export default function Hero() {
           </div>
 
           {/* Typing Text aligned to the right on desktop, but left-aligned internally for natural wrapping */}
-          <div className="mt-6 md:mt-0 md:w-[50%] flex justify-start md:justify-end min-h-[80px] items-center">
-            <div className="flex items-center">
-              <p className="text-3xl md:text-4xl lg:text-[2.45rem] font-bold text-white tracking-tight leading-[1.2] text-left whitespace-pre-line">
+          <div className="mt-6 md:mt-0 md:w-[50%] flex justify-start md:justify-end min-h-[80px] items-center max-w-full">
+            <div className="flex items-center max-w-full">
+              <p className="text-3xl md:text-4xl lg:text-[2.45rem] font-bold text-white tracking-tight leading-[1.2] text-left whitespace-pre-line break-words max-w-[90%] md:max-w-full">
                 {text}
               </p>
-              <span className="inline-block w-[5px] h-[45px] lg:h-[55px] ml-6 bg-primary animate-pulse flex-shrink-0" />
+              <span className="inline-block w-[5px] h-[45px] lg:h-[55px] ml-2 md:ml-6 bg-primary animate-pulse flex-shrink-0" />
             </div>
           </div>
         </div>

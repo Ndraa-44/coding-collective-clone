@@ -2,21 +2,25 @@ import FastMarquee from "react-fast-marquee";
 import { allClients } from "@/data/clients";
 import bgClients from "@/assets/images/bg-clients.png";
 
-// Robustly resolve the Marquee component from the Vite ESM import object
+// Workaround ESM/CJS interop issue antara react-fast-marquee dan Vite
 const resolveMarquee = (mod: any): any => {
   if (typeof mod === "function") return mod;
   if (mod && typeof mod.default === "function") return mod.default;
   if (mod && mod.default && typeof mod.default.default === "function") return mod.default.default;
-  if (mod && mod.default && typeof mod.default === "object" && mod.default.$$typeof) return mod.default; // For React.memo or forwardRef
+  if (mod && mod.default && typeof mod.default === "object" && mod.default.$$typeof) return mod.default;
   if (mod && typeof mod === "object" && mod.$$typeof) return mod;
   return mod;
 };
 
 const Marquee = resolveMarquee(FastMarquee);
 
+// Pre-compute rows dan duplikasinya di module scope (tidak di-re-create saat render)
 const row1 = allClients.slice(0, 6);
 const row2 = allClients.slice(6, 12);
 const row3 = allClients.slice(12, 18);
+const row1Doubled = [...row1, ...row1];
+const row2Doubled = [...row2, ...row2];
+const row3Doubled = [...row3, ...row3];
 
 const ClientPill = ({ client }: { client: { name: string; src: string } }) => (
   <div className="mx-2 md:mx-3 bg-[#f4f4f5] rounded-full px-6 py-3 h-14 md:h-[64px] w-40 md:w-56 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(255,255,255,0.15)] cursor-pointer group">
@@ -53,19 +57,19 @@ export default function ClientsMarquee() {
       {/* Marquee Rows with enough vertical padding for hover effects */}
       <div className="relative z-10 flex flex-col gap-4 md:gap-2">
         <Marquee speed={50} gradient={false} direction="left" pauseOnHover={true} className="py-2">
-          {[...row1, ...row1].map((client, idx) => (
+          {row1Doubled.map((client, idx) => (
             <ClientPill key={`r1-${idx}`} client={client} />
           ))}
         </Marquee>
 
         <Marquee speed={80} gradient={false} direction="right" pauseOnHover={true} className="py-2">
-          {[...row2, ...row2].map((client, idx) => (
+          {row2Doubled.map((client, idx) => (
             <ClientPill key={`r2-${idx}`} client={client} />
           ))}
         </Marquee>
 
         <Marquee speed={50} gradient={false} direction="left" pauseOnHover={true} className="py-2">
-          {[...row3, ...row3].map((client, idx) => (
+          {row3Doubled.map((client, idx) => (
             <ClientPill key={`r3-${idx}`} client={client} />
           ))}
         </Marquee>

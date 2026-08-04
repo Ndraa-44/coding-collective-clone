@@ -4,7 +4,7 @@ import { useRef } from "react";
 import globeVideo from "@/assets/globe.mp4";
 import { stats } from "@/data/stats";
 
-// Robustly resolve the CountUp component from the Vite ESM import object
+// Workaround ESM/CJS interop issue antara react-countup dan Vite
 const resolveCountUp = (mod: any): any => {
   if (typeof mod === "function") return mod;
   if (mod && typeof mod.default === "function") return mod.default;
@@ -62,7 +62,8 @@ export default function Statistics() {
               autoPlay 
               loop 
               muted 
-              playsInline 
+              playsInline
+              preload="none"
               className="w-full h-auto max-w-[320px] lg:max-w-[335px] object-contain drop-shadow-2xl opacity-80 mix-blend-screen"
             />
             <div className="absolute inset-0 bg-black/40 pointer-events-none">

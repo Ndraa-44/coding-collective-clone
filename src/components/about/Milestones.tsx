@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { Fragment, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { milestones } from "@/data/milestones";
@@ -46,7 +46,9 @@ export default function Milestones() {
       });
     });
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
       /**
        * ─── MASTER TIMELINE ─────────────────────────────
        */
@@ -130,7 +132,7 @@ export default function Milestones() {
 
     }, wrapper); // scope context ke wrapper agar cleanup akurat
 
-    return () => ctx.revert(); // cleanup semua ScrollTrigger & tween saat unmount
+    return () => mm.revert(); // cleanup semua ScrollTrigger & tween saat unmount
   }, []);
 
   /* ─── RENDER ────────────────────────────────────────── */
@@ -148,7 +150,7 @@ export default function Milestones() {
           ══════════════════════════════════════════════════ */}
       <div
         ref={stickyRef}
-        className="h-screen w-full overflow-hidden flex flex-col border-t border-white/5"
+        className="md:h-screen w-full md:overflow-hidden flex flex-col border-t border-white/5"
       >
         {/* ── Section Header ─────────────────────────── */}
         <div className="flex-shrink-0 pt-20 md:pt-24 pb-4 text-center">
@@ -195,7 +197,7 @@ export default function Milestones() {
                   className="flex flex-col will-change-transform"
                 >
                   {milestones.map((ms, index) => (
-                    <React.Fragment key={ms.year}>
+                    <Fragment key={ms.year}>
                       {/* Suffix number item */}
                       <div
                         ref={(el) => { suffixItemsRef.current[index] = el; }}
@@ -233,7 +235,7 @@ export default function Milestones() {
                           />
                         </div>
                       )}
-                    </React.Fragment>
+                    </Fragment>
                   ))}
                 </div>
               </div>
@@ -295,7 +297,7 @@ export default function Milestones() {
           </div>{/* end DESKTOP */}
 
           {/* ════════ MOBILE LAYOUT — stack vertikal, scroll normal ════════ */}
-          <div className="md:hidden w-full h-full overflow-y-auto">
+          <div className="md:hidden w-full">
             <div className="flex flex-col gap-12 px-6 py-8">
               {milestones.map((ms) => (
                 <div key={ms.year} className="flex flex-col">

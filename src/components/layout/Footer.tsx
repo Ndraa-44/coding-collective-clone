@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MessageCircle, MapPin, ExternalLink } from "lucide-react";
 import logoImg from "@/assets/images/logo.webp";
 
 export default function Footer() {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <footer className="bg-black pt-20 pb-10 border-t border-white/5 relative z-40 overflow-hidden">
       {/* Background glow at the bottom */}
@@ -42,12 +45,26 @@ export default function Footer() {
         {/* Column 2: Navigation */}
         <div className="md:col-span-2 lg:col-start-7 flex flex-col gap-5">
           <h4 className="font-bold text-white text-xl mb-2">Navigation</h4>
-          <Link to="/" className="text-primary font-semibold transition-colors text- w-fit">Home</Link>
-          <Link to="/about" className="text-muted-foreground hover:text-white transition-colors text-base w-fit">About</Link>
-          <Link to="/services" className="text-muted-foreground hover:text-white transition-colors text-base w-fit">Services</Link>
-          <Link to="/industries" className="text-muted-foreground hover:text-white transition-colors text-base w-fit">Industries</Link>
-          <Link to="/community" className="text-muted-foreground hover:text-white transition-colors text-base w-fit">Community</Link>
-          <Link to="/contact" className="text-muted-foreground hover:text-white transition-colors text-base w-fit">Contact</Link>
+          {[
+            { path: "/", label: "Home" },
+            { path: "/about", label: "About" },
+            { path: "/services", label: "Services" },
+            { path: "/industries", label: "Industries" },
+            { path: "/community", label: "Community" },
+            { path: "/contact", label: "Contact" },
+          ].map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`transition-colors text-base w-fit ${
+                currentPath === link.path
+                  ? "text-primary font-semibold"
+                  : "text-muted-foreground hover:text-white"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
         {/* Column 3: Social */}

@@ -98,3 +98,20 @@
     font-family: var(--font-sans);
   }
 }
+
+/* ── Solutions Orbit Animation ────────────────────────────────── */
+@keyframes orbit {
+  0%   { transform: translate(-50%, -50%) rotate(0deg)   translateX(var(--orbit-radius)) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+}
+
+.orbit-item {
+  --orbit-radius: 150px;
+}
+
+@media (min-width: 1230px) {
+  .orbit-item {
+    --orbit-radius: 190px;
+  }
+}
+

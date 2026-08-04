@@ -15,24 +15,25 @@ import imgLdc from "@/assets/images/ldc.webp";
 import imgPersonalBranding from "@/assets/images/personal-branding.webp";
 import imgShowCase from "@/assets/images/show-case.webp";
 
+// Definisi variants di module scope agar tidak di-recreate setiap render
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
+
 export default function Community() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut" as const },
-    },
-  };
-
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Hero Section */}

@@ -27,6 +27,7 @@ const SolutionOrbit = ({ title, items, activeIndex, setActiveIndex }: OrbitProps
           key={idx}
           src={item.src}
           alt={item.title.replace(/\n/g, ' ')}
+          loading="lazy"
           className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out ${activeIndex === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-110'}`}
         />
       ))}
@@ -104,6 +105,7 @@ const SolutionList = ({ number, title, items, activeIndex, setActiveIndex, rever
               key={idx}
               src={item.src}
               alt={item.title.replace(/\n/g, ' ')}
+              loading="lazy"
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${activeIndex === idx ? "opacity-100" : "opacity-0"
                 }`}
             />
@@ -120,25 +122,6 @@ export default function Solutions() {
 
   return (
     <section className="bg-background text-foreground py-24 rounded-t-[1rem] relative z-20 overflow-hidden mt-[-2rem] border-t border-border lg:border-t-0">
-      <style>{`
-        @keyframes orbit {
-          0% {
-            transform: translate(-50%, -50%) rotate(0deg) translateX(var(--radius)) rotate(0deg);
-          }
-          100% {
-            transform: translate(-50%, -50%) rotate(360deg) translateX(var(--radius)) rotate(-360deg);
-          }
-        }
-        .orbit-item {
-          --radius: 150px;
-        }
-        @media (min-width: 1230px) {
-          .orbit-item {
-            --radius: 190px;
-          }
-        }
-      `}</style>
-
       <div className="container mx-auto px-6 md:px-12">
         <h2 className="text-4xl md:text-[40px] font-black uppercase mb-20 text-center tracking-[-1px]">
           Solutions<span className="text-primary">.</span>
