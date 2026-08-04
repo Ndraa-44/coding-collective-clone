@@ -1,68 +1,68 @@
 # Coding Collective Clone
 
-This project is a high-fidelity clone of the Coding Collective website, aimed at replicating its UI/UX and layout as closely as possible.
+Proyek ini adalah *clone* (replika) dengan tingkat kemiripan tinggi (*high-fidelity*) dari situs web Coding Collective. Tujuannya adalah untuk mereplikasi antarmuka pengguna (UI), pengalaman pengguna (UX), dan tata letak (*layout*) semirip mungkin dengan referensi aslinya.
 
-## 🚀 Objective
+## 🚀 Tujuan Utama
 
-The main objective of this project is to build a pixel-perfect, highly responsive, and interactive clone of the reference website.
+Tujuan utama dari proyek ini adalah membangun replika situs web yang *pixel-perfect*, sangat responsif, dan interaktif sesuai dengan desain situs referensi.
 
-## ✨ Core Features & Requirements Met
+## ✨ Fitur Utama & Persyaratan yang Terpenuhi
 
-*   **Header Navigation**: Fully functional header menu that correctly navigates to each respective section and page of the application. It includes a sleek, mobile-responsive sidebar drawer.
-*   **Mobile Responsiveness**: The entire application is fully responsive and optimized to display correctly on all screen sizes, ensuring a seamless experience on mobile devices.
-*   **Assets & Content**: Uses carefully selected placeholder assets (images, videos, icons) and alternative content to closely match the original design's aesthetic.
-*   **Animations & Transitions**: Implemented smooth scroll effects, page transitions, and complex interactive animations (such as the draggable industry card deck and marquee elements) using Framer Motion to provide a premium, dynamic feel.
+*   **Navigasi Header**: Menu header berfungsi penuh dan dapat mengarahkan pengguna ke setiap bagian atau halaman aplikasi dengan benar. Dilengkapi juga dengan menu sidebar (*drawer*) yang responsif untuk tampilan mobile.
+*   **Responsivitas Mobile**: Seluruh aplikasi sepenuhnya responsif dan dioptimalkan agar tampil dengan baik di berbagai ukuran layar, memastikan pengalaman pengguna yang lancar di perangkat mobile maupun desktop.
+*   **Aset & Konten**: Menggunakan aset *placeholder* (gambar, video, ikon) dan konten alternatif yang dipilih dengan cermat untuk menyamai estetika desain aslinya.
+*   **Animasi & Transisi**: Mengimplementasikan efek *scroll* yang halus, transisi halaman, dan animasi interaktif yang kompleks (seperti *card deck* industri yang bisa digeser dan elemen *marquee*) untuk memberikan kesan premium dan dinamis.
 
-## 🛠️ Technology Stack
+## 🛠️ Teknologi yang Digunakan (Tech Stack)
 
-This project was built using modern, highly recommended frontend technologies:
+Proyek ini dibangun menggunakan teknologi *frontend* modern yang sangat direkomendasikan. Berikut adalah daftar teknologi yang digunakan beserta peranannya dalam sistem:
 
-*   **React.js**: Core library for building the user interface.
-*   **Vite**: Next-generation frontend tooling for fast development and optimized builds.
-*   **Tailwind CSS**: Utility-first CSS framework for rapid, flexible, and custom styling.
-*   **Framer Motion**: Production-ready animation library for React to handle complex transitions and interactive animations.
-*   **React Router**: For seamless client-side routing.
-*   **Lucide React**: For clean and consistent iconography.
+*   **React.js**: Bertindak sebagai pustaka (*library*) inti untuk membangun antarmuka pengguna (UI). React digunakan untuk memecah UI menjadi komponen-komponen yang dapat digunakan kembali (*reusable components*) dan mengelola *state* aplikasi.
+*   **Vite**: Digunakan sebagai alat pembuat (*build tool*) dan *development server*. Vite dipilih karena kemampuannya melakukan *Hot Module Replacement* (HMR) yang sangat cepat, sehingga proses pengembangan jauh lebih efisien dibandingkan alat tradisional seperti Webpack.
+*   **Tailwind CSS**: *Framework* CSS berbasis utilitas (*utility-first*) yang digunakan untuk mengatur gaya (*styling*) aplikasi secara keseluruhan. Tailwind memungkinkan penulisan *style* langsung di dalam class HTML, mempercepat proses desain tanpa perlu menulis file CSS terpisah yang panjang.
+*   **Framer Motion**: Pustaka animasi tingkat produksi untuk React. Framer Motion digunakan untuk menangani transisi halaman yang kompleks, efek munculnya elemen saat di-*scroll*, dan animasi interaktif (seperti kartu yang bisa di-*drag* pada halaman *Industries*).
+*   **React Router DOM**: Digunakan untuk *routing* di sisi klien (*client-side routing*). Memungkinkan perpindahan antar halaman (Home, About, Services, Industries, Community, Contact) tanpa perlu memuat ulang (*reload*) seluruh halaman web, menjaga pengalaman *Single Page Application* (SPA) yang cepat dan mulus.
+*   **Lucide React**: Kumpulan ikon SVG modern dan bersih yang diintegrasikan langsung sebagai komponen React. Digunakan untuk menampilkan ikon-ikon pada menu, tombol, dan kartu informasi di seluruh aplikasi.
 
-## 📦 Installation & Local Setup Guide
+## 📦 Panduan Instalasi & Menjalankan Proyek Lokal
 
-Follow these step-by-step instructions to install dependencies and run the project locally on your machine.
+Ikuti langkah-langkah berikut untuk menginstal dependensi dan menjalankan proyek ini di komputer Anda.
 
-### Prerequisites
+### Persyaratan Awal (Prerequisites)
 
-*   Ensure you have [Node.js](https://nodejs.org/) installed (v16 or higher is recommended).
+*   Pastikan Anda telah menginstal [Node.js](https://nodejs.org/) di komputer Anda (disarankan versi 16 ke atas).
 
-### Steps to Run Locally
+### Langkah-langkah Menjalankan Proyek
 
-1.  **Clone the repository**
-    Open your terminal and run the following command to clone the project:
+1.  **Clone Repositori**
+    Buka terminal atau *command prompt* Anda dan jalankan perintah berikut untuk mengunduh kode proyek:
     ```bash
     git clone https://github.com/Ndraa-44/coding-collective-clone.git
     cd coding-collective-clone
     ```
 
-2.  **Install dependencies**
-    Run the following command to download and install all required packages:
+2.  **Instal Dependensi (Dependencies)**
+    Jalankan perintah ini untuk mengunduh dan menginstal semua paket atau pustaka yang dibutuhkan oleh proyek:
     ```bash
     npm install
     ```
 
-3.  **Start the development server**
-    Start Vite's local development server by running:
+3.  **Mulai Development Server**
+    Jalankan server pengembangan lokal (Vite) dengan perintah:
     ```bash
     npm run dev
     ```
 
-4.  **View the application**
-    Once the server starts, it will provide a local URL (typically `http://localhost:5173/`). Open this URL in your web browser to view the application.
+4.  **Lihat Aplikasi di Browser**
+    Setelah server berjalan, terminal akan menampilkan URL lokal (biasanya `http://localhost:5173/` atau `http://localhost:5174/`). Buka URL tersebut di browser web Anda untuk melihat aplikasi.
 
-### Building for Production
+### Membangun untuk Produksi (Build for Production)
 
-To create an optimized, production-ready build, run:
+Untuk membuat versi aplikasi yang sudah dioptimalkan dan siap di-deploy (*production-ready*), jalankan perintah:
 ```bash
 npm run build
 ```
-The compiled files will be generated in the `dist` directory, ready to be deployed to any static hosting service.
+File hasil kompilasi akan otomatis dibuat di dalam folder `dist`. Anda dapat men-deploy folder ini ke layanan *hosting* statis pilihan Anda (seperti Vercel, Netlify, atau GitHub Pages).
 
-## 📄 Notes
-This project was developed to fulfill the submission requirements, showcasing proficiency in modern frontend web development, responsive design, and interactive user interfaces.
+## 📄 Catatan
+Proyek ini dikembangkan untuk memenuhi persyaratan penugasan, menunjukkan kemampuan dalam pengembangan web *frontend* modern, pembuatan desain responsif, dan penerapan antarmuka pengguna yang interaktif.
