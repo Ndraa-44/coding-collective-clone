@@ -1,6 +1,18 @@
-import Marquee from "react-fast-marquee";
+import FastMarquee from "react-fast-marquee";
 import { allClients } from "@/data/clients";
 import bgClients from "@/assets/images/bg-clients.png";
+
+// Robustly resolve the Marquee component from the Vite ESM import object
+const resolveMarquee = (mod: any): any => {
+  if (typeof mod === "function") return mod;
+  if (mod && typeof mod.default === "function") return mod.default;
+  if (mod && mod.default && typeof mod.default.default === "function") return mod.default.default;
+  if (mod && mod.default && typeof mod.default === "object" && mod.default.$$typeof) return mod.default; // For React.memo or forwardRef
+  if (mod && typeof mod === "object" && mod.$$typeof) return mod;
+  return mod;
+};
+
+const Marquee = resolveMarquee(FastMarquee);
 
 const row1 = allClients.slice(0, 6);
 const row2 = allClients.slice(6, 12);

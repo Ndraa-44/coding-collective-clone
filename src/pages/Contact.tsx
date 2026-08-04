@@ -3,14 +3,14 @@ import { Button } from "@/components/ui/button";
 export default function Contact() {
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] pt-48 pb-24 text-white">
+    <div className="min-h-screen bg-background pt-48 pb-24 text-white">
       <div className="container mx-auto px-6 md:px-12 w-full">
         {/* Header Section */}
         <div className="mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-[-1px]">
-            Get in <span className="text-[#FFC72C]">Touch</span>.
+            Get in <span className="text-primary">Touch</span>.
           </h1>
-          <p className="text-lg md:text-lg max-w-2xl opacity-0 animate-fade-up">
+          <p className="text-lg md:text-lg max-w-2xl text-gray-300 leading-relaxed">
             Whether you are exploring a new technology initiative, <br className="hidden md:block" />
             looking for a delivery partner, or seeking IT talent support, <br className="hidden md:block" />
             please complete the form below.
@@ -25,7 +25,7 @@ export default function Contact() {
                 <input
                   type="text"
                   id="name"
-                  className="w-full bg-[#0f0f0f] border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#FFC72C] transition-colors"
+                  className="w-full bg-secondary border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
                   placeholder="Ex: John Doe"
                 />
               </div>
@@ -34,7 +34,7 @@ export default function Contact() {
                 <input
                   type="text"
                   id="role"
-                  className="w-full bg-[#0f0f0f] border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#FFC72C] transition-colors"
+                  className="w-full bg-secondary border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
                   placeholder="Ex: CEO"
                 />
               </div>
@@ -43,7 +43,7 @@ export default function Contact() {
                 <input
                   type="text"
                   id="company"
-                  className="w-full bg-[#0f0f0f] border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#FFC72C] transition-colors"
+                  className="w-full bg-secondary border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
                   placeholder="Ex: Coding Collective"
                 />
               </div>
@@ -52,7 +52,7 @@ export default function Contact() {
                 <input
                   type="tel"
                   id="phone"
-                  className="w-full bg-[#0f0f0f] border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#FFC72C] transition-colors"
+                  className="w-full bg-secondary border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
                   placeholder="Ex: +62xxx"
                 />
               </div>
@@ -61,7 +61,7 @@ export default function Contact() {
                 <input
                   type="email"
                   id="email"
-                  className="w-full bg-[#0f0f0f] border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#FFC72C] transition-colors"
+                  className="w-full bg-secondary border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
                   placeholder="Ex: name@company.com"
                 />
               </div>
@@ -70,7 +70,7 @@ export default function Contact() {
                 <div className="relative">
                   <select
                     id="need"
-                    className="w-full bg-[#0f0f0f] border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#FFC72C] transition-colors appearance-none cursor-pointer text-gray-400"
+                    className="w-full bg-secondary border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer text-gray-400"
                     defaultValue=""
                   >
                     <option value="" disabled hidden>Choose Your Need</option>
@@ -92,12 +92,12 @@ export default function Contact() {
               <textarea
                 id="message"
                 rows={6}
-                className="w-full bg-[#0f0f0f] border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#FFC72C] transition-colors resize-none"
+                className="w-full bg-secondary border border-white/10 rounded-md px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors resize-none"
               />
             </div>
             
             <div className="pt-4">
-              <Button className="bg-[#FFC72C] text-black hover:bg-[#FFC72C]/90 font-bold py-3 px-8 rounded text-sm min-w-[120px]">
+              <Button className="bg-primary text-black hover:bg-primary/90 font-bold py-3 px-8 rounded text-sm min-w-[120px]">
                 Submit
               </Button>
             </div>

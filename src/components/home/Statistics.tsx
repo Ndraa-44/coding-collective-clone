@@ -1,8 +1,20 @@
-import CountUp from "react-countup";
+import FastCountUp from "react-countup";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import globeVideo from "@/assets/globe.mp4";
 import { stats } from "@/data/stats";
+
+// Robustly resolve the CountUp component from the Vite ESM import object
+const resolveCountUp = (mod: any): any => {
+  if (typeof mod === "function") return mod;
+  if (mod && typeof mod.default === "function") return mod.default;
+  if (mod && mod.default && typeof mod.default.default === "function") return mod.default.default;
+  if (mod && mod.default && typeof mod.default === "object" && mod.default.$$typeof) return mod.default;
+  if (mod && typeof mod === "object" && mod.$$typeof) return mod;
+  return mod;
+};
+
+const CountUp = resolveCountUp(FastCountUp);
 
 export default function Statistics() {
   const ref = useRef(null);

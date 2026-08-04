@@ -28,8 +28,8 @@ export const milestones = [
     bullets: ["IT Recruitment", "Product Development", "Process Automation"]
   },
   {
-    year: "2024",
-    suffix: "24",
+    year: "2023",
+    suffix: "23",
     title: "Global Expansion",
     description: "Opened new branches in Singapore and beyond, serving enterprise-level global clients at scale.",
     bullets: ["6 Countries Served", "Enterprise Solutions", "Cloud & Infrastructure"]
