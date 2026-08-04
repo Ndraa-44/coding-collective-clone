@@ -1,35 +1,13 @@
-
-const portfolios = [
-  {
-    title: "Taman Mini Indonesia Indah",
-    description: "Omnichannel Ticketing System & Mobile App",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-  },
-  {
-    title: "MRT Jakarta",
-    description: "Workforce Management Dashboard",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
-  },
-  {
-    title: "YK Explore",
-    description: "Travel App Omnichannel 2025",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop",
-  },
-  {
-    title: "Locate App",
-    description: "App Development 2025",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop",
-  }
-];
+import { portfolios } from "@/data/works";
 
 export default function Works() {
   return (
     <section className="py-20 bg-black">
       <div className="container mx-auto px-6 md:px-12">
         <div className="mb-14">
-          <h1 className="text-4xl md:text-[40px] font-black text-white tracking-[-1px] mb-4 uppercase leading-none">
+          <h2 className="text-4xl md:text-[40px] font-black text-white tracking-[-1px] mb-4 uppercase leading-none">
             Works<span className="text-primary text-4xl">.</span>
-          </h1>
+          </h2>
           <p className="text-md text-muted-foreground">
             We've helped businesses across industries achieve their goals. Here are some of our recent projects.
           </p>
