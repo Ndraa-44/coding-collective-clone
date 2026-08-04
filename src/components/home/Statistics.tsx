@@ -1,15 +1,8 @@
-import CountUpImport from "react-countup";
-const CountUp = (CountUpImport as any).default || CountUpImport;
+import CountUp from "react-countup";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-
-const stats = [
-  { value: 10, suffix: " +", label: "Years of Experience" },
-  { value: 100, suffix: " +", label: "Total satisfied global clients" },
-  { value: 9, suffix: "", label: "Countries business operation" },
-  { value: 6, suffix: "", label: "Countries with established office locations" },
-  { value: 200, suffix: "+", label: "Certified Developers" },
-];
+import globeVideo from "@/assets/globe.mp4";
+import { stats } from "@/data/stats";
 
 export default function Statistics() {
   const ref = useRef(null);
@@ -53,7 +46,7 @@ export default function Statistics() {
           </div>
           <div className="lg:col-span-4 relative flex justify-center lg:justify-end items-center">
             <video 
-              src="/src/assets/globe.mp4" 
+              src={globeVideo} 
               autoPlay 
               loop 
               muted 

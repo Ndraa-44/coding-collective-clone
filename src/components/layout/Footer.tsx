@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { MessageCircle, MapPin, ExternalLink } from "lucide-react";
+import logoImg from "@/assets/images/logo.webp";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0a0a0a] pt-20 pb-10 border-t border-white/5 relative z-40 overflow-hidden">
+    <footer className="bg-background pt-20 pb-10 border-t border-white/5 relative z-40 overflow-hidden">
       {/* Background glow at the bottom */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[800px] h-[300px] bg-white/5 rounded-full blur-[100px] pointer-events-none"></div>
 
@@ -12,12 +13,12 @@ export default function Footer() {
         {/* Column 1: Logo & Info */}
         <div className="md:col-span-5 lg:col-span-4 flex flex-col gap-8">
           <Link to="/" className="flex items-center gap-2 group w-fit">
-            <img src="/src/assets/images/logo.webp" alt="Coding Collective Logo" className="h-12 w-auto md:h-16 object-contain group-hover:scale-105 transition-transform" />
+            <img src={logoImg} alt="Coding Collective Logo" className="h-12 w-auto md:h-16 object-contain group-hover:scale-105 transition-transform" />
           </Link>
           
           <div className="flex flex-col gap-6">
             <div className="flex gap-3">
-              <MapPin className="text-[#FFC72C] shrink-0 w-5 h-5 mt-1" />
+              <MapPin className="text-primary shrink-0 w-5 h-5 mt-1" />
               <div>
                 <p className="font-bold text-white text-lg">Indonesia</p>
                 <p className="text-base mt-2 leading-relaxed max-w-[400px]">
@@ -27,7 +28,7 @@ export default function Footer() {
             </div>
             
             <div className="flex gap-3">
-              <MapPin className="text-[#FFC72C] shrink-0 w-5 h-5 mt-1" />
+              <MapPin className="text-primary shrink-0 w-5 h-5 mt-1" />
               <div>
                 <p className="font-bold text-white text-lg">Singapore</p>
                 <p className="text-base mt-2 leading-relaxed max-w-[400px]">
@@ -41,7 +42,7 @@ export default function Footer() {
         {/* Column 2: Navigation */}
         <div className="md:col-span-2 lg:col-start-7 flex flex-col gap-5">
           <h4 className="font-bold text-white text-xl mb-2">Navigation</h4>
-          <Link to="/" className="text-[#FFC72C] font-semibold transition-colors text- w-fit">Home</Link>
+          <Link to="/" className="text-primary font-semibold transition-colors text- w-fit">Home</Link>
           <Link to="/about" className="text-muted-foreground hover:text-white transition-colors text-base w-fit">About</Link>
           <Link to="/services" className="text-muted-foreground hover:text-white transition-colors text-base w-fit">Services</Link>
           <Link to="/industries" className="text-muted-foreground hover:text-white transition-colors text-base w-fit">Industries</Link>
