@@ -11,4 +11,22 @@ export default defineConfig({
       "@": path.resolve(import.meta.dirname, "./src"),
     },
   },
+  server: {
+    watch: {
+      // Prevent EBUSY errors on Windows when large binary files are open
+      ignored: [
+        "**/src/assets/images/**",
+        "**/*.webp",
+        "**/*.mp4",
+        "**/*.png",
+        "**/*.jpg",
+        "**/*.jpeg",
+        "**/*.gif",
+        "**/*.svg",
+        "**/*.woff",
+        "**/*.woff2",
+        "**/*.ttf",
+      ],
+    },
+  },
 })
