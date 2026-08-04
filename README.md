@@ -23,6 +23,11 @@ Proyek ini dibangun menggunakan teknologi *frontend* modern yang sangat direkome
 *   **Framer Motion**: Pustaka animasi tingkat produksi untuk React. Framer Motion digunakan untuk menangani transisi halaman yang kompleks, efek munculnya elemen saat di-*scroll*, dan animasi interaktif (seperti kartu yang bisa di-*drag* pada halaman *Industries*).
 *   **React Router DOM**: Digunakan untuk *routing* di sisi klien (*client-side routing*). Memungkinkan perpindahan antar halaman (Home, About, Services, Industries, Community, Contact) tanpa perlu memuat ulang (*reload*) seluruh halaman web, menjaga pengalaman *Single Page Application* (SPA) yang cepat dan mulus.
 *   **Lucide React**: Kumpulan ikon SVG modern dan bersih yang diintegrasikan langsung sebagai komponen React. Digunakan untuk menampilkan ikon-ikon pada menu, tombol, dan kartu informasi di seluruh aplikasi.
+*   **Shadcn UI & Radix UI**: Digunakan sebagai fondasi untuk komponen UI yang aksesibel dan dapat dikustomisasi penuh (seperti Accordion untuk FAQ). Memanfaatkan `clsx`, `class-variance-authority`, dan `tailwind-merge` untuk penggabungan kelas Tailwind yang dinamis dengan aman.
+*   **GSAP (GreenSock)**: Pustaka animasi standar industri yang kuat. Turut tersedia dalam sistem untuk menangani kebutuhan animasi kustom berbasis *timeline* yang sangat spesifik dan kompleks.
+*   **React Fast Marquee**: Pustaka khusus yang digunakan untuk menciptakan efek *scrolling banner* otomatis dan tanpa henti (misalnya pada barisan logo klien dan mitra bisnis).
+*   **React CountUp**: Digunakan untuk memberikan efek animasi angka bergulir dinamis (seperti yang terlihat pada bagian Statistik angka pertumbuhan perusahaan).
+*   **Oxlint**: Digunakan sebagai alat analisis statis (*linter*) berbasis Rust yang super cepat. Berfungsi untuk mendeteksi error, menjaga kualitas kode, dan memastikan penulisan kode sesuai standar praktik terbaik (best practices).
 
 ## 📦 Panduan Instalasi & Menjalankan Proyek Lokal
 
