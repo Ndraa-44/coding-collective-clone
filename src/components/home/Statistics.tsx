@@ -1,15 +1,20 @@
-import CountUpImport from "react-countup";
-const CountUp = (CountUpImport as any).default || CountUpImport;
+import FastCountUp from "react-countup";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import globeVideo from "@/assets/globe.mp4";
+import { stats } from "@/data/stats";
 
-const stats = [
-  { value: 10, suffix: " +", label: "Years of Experience" },
-  { value: 100, suffix: " +", label: "Total satisfied global clients" },
-  { value: 9, suffix: "", label: "Countries business operation" },
-  { value: 6, suffix: "", label: "Countries with established office locations" },
-  { value: 200, suffix: "+", label: "Certified Developers" },
-];
+// Robustly resolve the CountUp component from the Vite ESM import object
+const resolveCountUp = (mod: any): any => {
+  if (typeof mod === "function") return mod;
+  if (mod && typeof mod.default === "function") return mod.default;
+  if (mod && mod.default && typeof mod.default.default === "function") return mod.default.default;
+  if (mod && mod.default && typeof mod.default === "object" && mod.default.$$typeof) return mod.default;
+  if (mod && typeof mod === "object" && mod.$$typeof) return mod;
+  return mod;
+};
+
+const CountUp = resolveCountUp(FastCountUp);
 
 export default function Statistics() {
   const ref = useRef(null);
@@ -53,7 +58,7 @@ export default function Statistics() {
           </div>
           <div className="lg:col-span-4 relative flex justify-center lg:justify-end items-center">
             <video 
-              src="/src/assets/globe.mp4" 
+              src={globeVideo} 
               autoPlay 
               loop 
               muted 

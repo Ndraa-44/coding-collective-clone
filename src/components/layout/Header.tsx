@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import logoImg from "@/assets/images/logo.webp";
 
 const navLinks = [
   { name: "About Us", path: "/about" },
@@ -41,7 +42,7 @@ export default function Header() {
       <div className="container mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group relative z-[60]">
-          <img src="/src/assets/images/logo.webp" alt="Coding Collective Logo" className="h-12 w-auto md:h-16 object-contain group-hover:scale-105 transition-transform" />
+          <img src={logoImg} alt="Coding Collective Logo" className="h-12 w-auto md:h-16 object-contain group-hover:scale-105 transition-transform" />
         </Link>
 
         {/* Desktop Nav */}
@@ -89,7 +90,7 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3, ease: "easeOut" }}
-              className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-[#0a0a0a] border-l border-white/10 z-[58] lg:hidden flex flex-col pt-24 px-8 shadow-2xl"
+              className="fixed top-0 right-0 h-full w-[80%] max-w-sm bg-background border-l border-white/10 z-[58] lg:hidden flex flex-col pt-24 px-8 shadow-2xl"
             >
               <div className="flex flex-col gap-8 mt-8">
                 <Link

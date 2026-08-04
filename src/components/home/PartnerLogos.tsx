@@ -1,9 +1,4 @@
-const partners = [
-  { name: "Tencent", src: "/src/assets/images/tencent.webp" },
-  { name: "AWS", src: "/src/assets/images/aws-v2.webp" },
-  { name: "Azure", src: "/src/assets/images/azure.webp" },
-  { name: "Alibaba Cloud", src: "/src/assets/images/alibaba.webp" }
-];
+import { partners } from "@/data/partners";
 
 export default function PartnerLogos() {
   return (

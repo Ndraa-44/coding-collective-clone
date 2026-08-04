@@ -1,28 +1,18 @@
-import MarqueeImport from "react-fast-marquee";
+import FastMarquee from "react-fast-marquee";
+import { allClients } from "@/data/clients";
+import bgClients from "@/assets/images/bg-clients.png";
 
-// Fix untuk kompatibilitas vite dan react-fast-marquee (double default interop)
-const Marquee = (MarqueeImport as any).default || MarqueeImport;
+// Robustly resolve the Marquee component from the Vite ESM import object
+const resolveMarquee = (mod: any): any => {
+  if (typeof mod === "function") return mod;
+  if (mod && typeof mod.default === "function") return mod.default;
+  if (mod && mod.default && typeof mod.default.default === "function") return mod.default.default;
+  if (mod && mod.default && typeof mod.default === "object" && mod.default.$$typeof) return mod.default; // For React.memo or forwardRef
+  if (mod && typeof mod === "object" && mod.$$typeof) return mod;
+  return mod;
+};
 
-const allClients = [
-  { name: "Tencent", src: "/src/assets/images/tencent.webp" },
-  { name: "AWS", src: "/src/assets/images/aws-v2.webp" },
-  { name: "Azure", src: "/src/assets/images/azure.webp" },
-  { name: "Alibaba Cloud", src: "/src/assets/images/alibaba.webp" },
-  { name: "Locate", src: "/src/assets/images/locate.webp" },
-  { name: "TMII", src: "/src/assets/images/tmii.webp" },
-  { name: "CIM", src: "/src/assets/images/cim.webp" },
-  { name: "MRT", src: "/src/assets/images/mrt.webp" },
-  { name: "YK Explore", src: "/src/assets/images/ykexplore.webp" },
-  { name: "Digital Transformation", src: "/src/assets/images/digital-transformation.webp" },
-  { name: "Data Analytics", src: "/src/assets/images/data-analytics.webp" },
-  { name: "Head Hunting", src: "/src/assets/images/head-hunting.webp" },
-  { name: "IT Community", src: "/src/assets/images/it-community.webp" },
-  { name: "IT Outsourcing", src: "/src/assets/images/it-outsourcing.webp" },
-  { name: "Payment Automation", src: "/src/assets/images/payment-automation.webp" },
-  { name: "Project Based", src: "/src/assets/images/project-based.webp" },
-  { name: "QA Security", src: "/src/assets/images/qa-security.webp" },
-  { name: "Sysadmin", src: "/src/assets/images/sysadmin.webp" },
-];
+const Marquee = resolveMarquee(FastMarquee);
 
 const row1 = allClients.slice(0, 6);
 const row2 = allClients.slice(6, 12);
@@ -48,7 +38,7 @@ export default function ClientsMarquee() {
       {/* Background glow using bg-clients.png */}
       <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
         <img
-          src="/src/assets/images/bg-clients.png"
+          src={bgClients}
           alt=""
           className="w-[50%] max-w-[500px] lg:max-w-[1000px] h-auto object-contain opacity-90"
         />
