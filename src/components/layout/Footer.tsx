@@ -3,7 +3,7 @@ import { MessageCircle, MapPin, ExternalLink } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0a0a0a] pt-20 pb-10 border-t border-white/5 relative z-40 overflow-hidden">
+    <footer className="bg-black pt-20 pb-10 border-t border-white/5 relative z-40 overflow-hidden">
       {/* Background glow at the bottom */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[800px] h-[300px] bg-white/5 rounded-full blur-[100px] pointer-events-none"></div>
 
